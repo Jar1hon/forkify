@@ -11,10 +11,6 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import paginationView from './views/paginationView.js';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -49,7 +45,6 @@ const controlSearchResult = async function () {
     await model.loadSearchResult(query);
 
     // 3) Отображение результата
-    // resultsView.render(model.state.search.results);
     resultsView.render(model.getSearchResultPage());
 
     // 4) Рендер кнопок страниц
@@ -61,7 +56,6 @@ const controlSearchResult = async function () {
 
 const controlPagination = function (goToPage) {
   // 3) Отображение НОВОГО результата
-  // resultsView.render(model.state.search.results);
   resultsView.render(model.getSearchResultPage(goToPage));
 
   // 4) Рендер НОВЫХ кнопок страниц
@@ -73,7 +67,6 @@ const controlServings = function (newServings) {
   model.updateServings(newServings);
 
   //2) Визуализировать
-  // recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe);
 };
 
